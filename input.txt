@@ -1,0 +1,13 @@
+from pundit import Pundit
+cc = Pundit('desc')
+cc.add_input(1, "Chief Technology Officer", 'str')
+cc.add_input(1, "VP of Technology", 'str')
+cc.add_input(1, "Chief Operations Officer", 'str')
+cc.add_input(2, "Software Engineer", 'str')
+cc.add_input(2, "Product Engineer", 'str')
+cc.input_preprocess(1, 'lower')
+
+cc.add_condition('chief', 'IN', 1)
+cc.add_condition('software', 'IN', 2)
+
+cc.evaluate('chief', 1)

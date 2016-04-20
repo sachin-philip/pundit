@@ -10,23 +10,58 @@ class Pundit():
 	def __init__(self, name):
 		self.title = name
 		self.input_set = []
+		self.processed_input = []
+		self.condition = []
 		
 	def add_input(self, id, value, type):
 		input_json = {'id': id, 'value':value, 'type': type}
 		self.input_set.append(input_json) 
 
-	def add_condition(self):
-		pass
 
-	@property
-	def input_preprocess(self, id, func):
-		input_dict = json.loads(self.input_set)
+	def input_preprocess(self, id, function):
 
-		def lower():
+
+		def lower(self, id):
+
+			self.processed_input = []
+			for x in self.input_set:
+				if x['id'] == id:
+					self.processed_input.append({'id': x['id'],'value': x['value'].lower(), 'type': x['type']})
+				else:
+					self.processed_input.append(x)
+			return
+
+		def upper(self, id):
+			self.processed_input = []
+			for x in self.input_set:
+				if x['id'] == id:
+					self.processed_input.append({{'id': x['id'],'value': x['value'].upper(), 'type': x['type']}})
+				else:
+					self.processed_input.append(x)
+			return
+
+		if function == 'lower':
+			lower(self, id)
+		elif function == 'upper':
+			upper(self, id)
+		else:
 			pass
 
-	def evaluate(self):
-		pass
+
+	def add_condition(self, value, condition, type):
+		input_json = {'condition': condition, 'value':value, 'type': type}
+		self.condition.append(input_json) 
+
+
+	def evaluate(self, value, type):
+		type_condition = [x for x in self.condition if x['type'] == type]
+		process_data = [x['value'] for x in self.processed_input if x['id'] == type]
+
+		for x in type_condition:
+			if x['condition'] == 'IN':
+				return True if True in [value in x for x in process_data] else False
+			else:
+				pass
 
 
 class MathRuler():
