@@ -1,6 +1,26 @@
 import itertools
 
-__version__ = "0.0.2"
+__version__ = "0.0.3"
+
+
+class Pundit():
+	"""docstring for Pundit"""
+	
+	def __init__(self, arg):
+		super(Pundit, self).__init__()
+		self.arg = arg
+		
+	def add_input(self):
+		pass
+
+	def add_condition(self):
+		pass
+
+	def input_preprocess(self):
+		pass
+
+	def evaluate(self):
+		pass
 
 
 class MathRuler():
@@ -17,14 +37,6 @@ class MathRuler():
 		exp_converter = then_that.replace(for_this, str(con))
 		return eval(exp_converter)	
 
-
-
-class CharRuler():
-	"""docstring for CharRuler"""
-
-
-	def __init__(self, from_this, then_that):
-		pass
 
 
 class ListRuler():

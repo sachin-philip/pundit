@@ -1,7 +1,7 @@
 from setuptools import setup
 from rule_engine import __version__
 
-setup(name='rulepy',
+setup(name='pundit',
       version=__version__,
       description="Rule engine for python",
       url='https://github.com/sachinvettithanam/rule-py',
