@@ -1,5 +1,5 @@
 from setuptools import setup
-from rule_engine import __version__
+from pundit import __version__
 
 setup(name='pundit',
       version=__version__,

@@ -1,23 +1,29 @@
 import itertools
+import json
 
 __version__ = "0.0.3"
 
 
 class Pundit():
-	"""docstring for Pundit"""
-	
-	def __init__(self, arg):
-		super(Pundit, self).__init__()
-		self.arg = arg
+	"""Pundit rule engine to process condisions"""
+
+	def __init__(self, name):
+		self.title = name
+		self.input_set = []
 		
-	def add_input(self):
-		pass
+	def add_input(self, id, value, type):
+		input_json = {'id': id, 'value':value, 'type': type}
+		self.input_set.append(input_json) 
 
 	def add_condition(self):
 		pass
 
-	def input_preprocess(self):
-		pass
+	@property
+	def input_preprocess(self, id, func):
+		input_dict = json.loads(self.input_set)
+
+		def lower():
+			pass
 
 	def evaluate(self):
 		pass
