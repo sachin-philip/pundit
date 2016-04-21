@@ -31,6 +31,7 @@ class Pundit():
 					self.processed_input.append(x)
 			return
 
+
 		def upper(self, id):
 			self.processed_input = []
 			for x in self.input_set:
@@ -48,9 +49,8 @@ class Pundit():
 			pass
 
 
-	def add_condition(self, value, condition, type):
-		input_json = {'condition': condition, 'value':value, 'type': type}
-		self.condition.append(input_json) 
+	def condition(self, condition):
+		pass
 
 
 	def evaluate(self, value, type):
@@ -62,6 +62,19 @@ class Pundit():
 				return True if True in [value in x for x in process_data] else False
 			else:
 				pass
+
+
+class ConditionGroup():
+	"""create conditiongroup for pundit object"""
+
+	def __init__(self, name):
+		self.name = name
+
+
+	def add_condition(self, value, condition, type):
+		input_json = {'condition': condition, 'value':value, 'type': type}
+		self.condition.append(input_json) 
+		
 
 
 class MathRuler():
