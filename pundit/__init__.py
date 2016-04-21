@@ -1,7 +1,7 @@
 import itertools
 import json
 
-__version__ = "0.0.3"
+__version__ = "0.0.4"
 
 
 class Pundit():
@@ -49,17 +49,14 @@ class Pundit():
 			pass
 
 
-	def condition(self, condition):
-		pass
-
-
-	def evaluate(self, value, type):
-		type_condition = [x for x in self.condition if x['type'] == type]
+	def evaluate(self, type, condition):
+		type_condition = [x for x in condition.condition if x['type'] == type]
 		process_data = [x['value'] for x in self.processed_input if x['id'] == type]
+
 
 		for x in type_condition:
 			if x['condition'] == 'IN':
-				return True if True in [value in x for x in process_data] else False
+				return True if True in [x['value'] in pd for pd in process_data] else False
 			else:
 				pass
 
@@ -69,6 +66,7 @@ class ConditionGroup():
 
 	def __init__(self, name):
 		self.name = name
+		self.condition = []
 
 
 	def add_condition(self, value, condition, type):

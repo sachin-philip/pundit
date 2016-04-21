@@ -1,13 +1,27 @@
-from pundit import Pundit
-cc = Pundit('desc')
-cc.add_input(1, "Chief Technology Officer", 'str')
-cc.add_input(1, "VP of Technology", 'str')
-cc.add_input(1, "Chief Operations Officer", 'str')
-cc.add_input(2, "Software Engineer", 'str')
-cc.add_input(2, "Product Engineer", 'str')
-cc.input_preprocess(1, 'lower')
+from pundit import Pundit, ConditionGroup
+pundit = Pundit('desc')
+pundit.add_input(1, "Chief Technology Officer", 'str')
+pundit.add_input(1, "VP of Technology", 'str')
+pundit.add_input(1, "Chief Operations Officer", 'str')
+pundit.add_input(2, "Software Engineer", 'str')
+pundit.add_input(2, "Product Engineer", 'str')
+pundit.input_preprocess(1, 'lower')
 
-cc.add_condition('chief', 'IN', 1)
-cc.add_condition('software', 'IN', 2)
 
-cc.evaluate('chief', 1)
+condition = ConditionGroup('chief')
+condition.add_condition('chief', 'IN', 1)
+condition.add_condition('software', 'IN', 2)
+
+
+pundit.evaluate(1, condition)
+
+
+
+# we ill give a set of input 
+
+# we ill create a set of condition
+
+# we ill evaluate input set with condition
+  Return if condition satisfies the input set
+
+  True or False 
