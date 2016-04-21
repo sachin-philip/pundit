@@ -24,4 +24,52 @@ pundit.evaluate(1, condition)
 # we ill evaluate input set with condition
   Return if condition satisfies the input set
 
-  True or False 
+  True or False
+
+
+	condi
+
+	if "chif" true allel false
+
+	pudit()
+  
+  	pundit.add_input
+
+  	evalue(pudit, condition)
+  
+
+  	c = if chielf - etrue else false
+  	p = desc , rank
+
+  	p.e(c, ["chief", "rank"])
+
+
+  	p1
+
+  	str
+
+  	c1 c2 c3
+
+  	eval(p1[structure])
+
+
+pundit_base()
+	
+	pundit()
+		structrue of input
+
+	condisiongroup()
+		condition object
+
+
+	evaluate([input])
+
+
+
+
+
+
+
+
+
+
