@@ -14,32 +14,6 @@ class PunditBase():
 		self.condition = []
 		
 
-
-	class Pundit():
-		"""Pundit rule engine to process condisions"""
-
-		def __init__(self, name):
-			self.title = name
-			self.structure = []
-
-
-		def add_structure(self, arg1, arg2):
-			self.structure.append({arg1:{}, arg2:{}})
-
-
-	class ConditionGroup():
-	"""create conditiongroup for pundit object"""
-
-		def __init__(self, name):
-			self.name = name
-			self.condition = []
-
-
-		def add_condition(self, condition, optn, then, else_value):
-			input_json = {'condition': condition, 'optn':optn, 'then': then, 'else_value':else_value}
-			self.condition.append(input_json)
-	
-
 	def input_preprocess(self, id, function):
 
 
@@ -92,6 +66,32 @@ class PunditBase():
 			else:
 				pass
 
+
+
+class Pundit(PunditBase):
+	"""Pundit rule engine to process condisions"""
+
+	def __init__(self, name):
+		self.title = name
+		self.structure = []
+
+
+	def add_structure(self, arg1, arg2):
+		self.structure.append({arg1:{}, arg2:{}})
+
+
+
+class ConditionGroup(PunditBase):
+"""create conditiongroup for pundit object"""
+
+	def __init__(self, name):
+		self.name = name
+		self.condition = []
+
+
+	def add_condition(self, condition, optn, then, else_value):
+		input_json = {'condition': condition, 'optn':optn, 'then': then, 'else_value':else_value}
+		self.condition.append(input_json)
 
 
 
