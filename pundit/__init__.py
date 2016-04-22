@@ -8,15 +8,14 @@ __version__ = "0.0.5"
 PunditBase Parent Class
 Arguments : name
 '''
+
 class PunditBase():
 
 
-	def __init__(self, name):
-		self.title = name
-		self.processed_input = []
-		self.condition = []
-		
+	def __init__(self):
+		self.mine = 'asd'
 	
+
 	'''
 	Input preprocessor
 	'''
@@ -51,13 +50,14 @@ class PunditBase():
 			pass
 
 
-	def add_input(self, id, value, type):
-		input_json = {'id': id, 'value':value, 'type': type}
-		self.input_set.append(input_json) 
-
-
 
 	def evaluate(self, input):
+		import ipdb;ipdb.set_trace()
+		# input stuff
+		input_json = {'id': id, 'value':value, 'type': type}
+		self.input_set.append(input_json) 
+		
+		#check setup
 		type_condition = [x for x in condition.condition if x['type'] == type]
 		process_data = [x['value'] for x in self.processed_input if x['id'] == type]
 
@@ -73,8 +73,8 @@ Pundit class where structure is defined
 '''
 class Pundit(PunditBase):
 
-	def __init__(self, name):
-		self.title = "asdasd"
+	def __init__(self, arg):
+		self.parent = arg
 		self.structure = []
 
 
@@ -89,7 +89,7 @@ class ConditionGroup(PunditBase):
 
 	def __init__(self, name):
 		self.name = name
-		self.condition = []
+		self.condition = ["asd"]
 
 
 	def add_condition(self, condition, optn, then, else_value):
