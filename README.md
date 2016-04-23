@@ -37,10 +37,13 @@ conditiongroup = Conditiongroup()
 #### Usage
 
 conditiongroup.add_condition(match, condition type, success response, failed response)
+```
 
 **Match:** str or integer data argument
 
-**Condition Types:** String
+**Condition Types:** 
+```
+String
 IN
 NOT_IN
 NOT_IS
