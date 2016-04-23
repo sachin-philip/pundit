@@ -1,4 +1,4 @@
 ### Pundit Rule Engine ###
 
 
-TODO
+#refer - input.txt

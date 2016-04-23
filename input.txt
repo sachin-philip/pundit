@@ -1,75 +1,28 @@
-from pundit import Pundit, ConditionGroup
-pundit = Pundit('desc')
-pundit.add_input(1, "Chief Technology Officer", 'str')
-pundit.add_input(1, "VP of Technology", 'str')
-pundit.add_input(1, "Chief Operations Officer", 'str')
-pundit.add_input(2, "Software Engineer", 'str')
-pundit.add_input(2, "Product Engineer", 'str')
-pundit.input_preprocess(1, 'lower')
+from pundit import PunditBase, Pundit, ConditionGroup
+base = PunditBase()
+base.add_structure("designation", "rank")
+base.structure
 
 
-condition = ConditionGroup('chief')
-condition.add_condition('chief', 'IN', 1)
-condition.add_condition('software', 'IN', 2)
+conditions = ConditionGroup()
+conditions.add_condition("chief","IN", "Success", "Failed")
+conditions.add_condition("engineer","IN", "Success", "Failed")
+conditions.conditions
 
 
-pundit.evaluate(1, condition)
+pundit = Pundit(base, conditions)
 
+pundit.evaluate('chief technology officer')
 
+>>> Success
 
-# we ill give a set of input 
+pundit.evaluate('sofware engineer')
 
-# we ill create a set of condition
+>>> Success
 
-# we ill evaluate input set with condition
-  Return if condition satisfies the input set
+pundit.evaluate('sofware')
 
-  True or False
-
-
-	condi
-
-	if "chif" true allel false
-
-	pudit()
-  
-  	pundit.add_input
-
-  	evalue(pudit, condition)
-  
-
-  	c = if chielf - etrue else false
-  	p = desc , rank
-
-  	p.e(c, ["chief", "rank"])
-
-
-  	p1
-
-  	str
-
-  	c1 c2 c3
-
-  	eval(p1[structure])
-
-
-pundit_base()
-	
-	pundit()
-		structrue of input
-
-	condisiongroup()
-		condition object
-
-
-	evaluate([input])
-
-
-
-
-
-
-
+>>> Failed
 
 
 

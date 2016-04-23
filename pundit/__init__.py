@@ -1,7 +1,7 @@
 import itertools
 import json
 
-__version__ = "0.0.5"
+__version__ = "0.0.6"
 
 
 '''
@@ -16,9 +16,6 @@ class PunditBase():
 		self.mine = 'asd'
 	
 
-	'''
-	Input preprocessor
-	'''
 	def input_preprocess(self, id, function):
 
 
@@ -51,8 +48,14 @@ class PunditBase():
 
 
 	def add_structure(self, arg1, arg2):
+		self.structure = []
 		self.structure.append({arg1:{}, arg2:{}})
 
+
+	@property
+	def structure(self):
+	    return self.structure
+	
 	
 
 '''
@@ -61,44 +64,42 @@ Condition group where conditions are set
 
 class ConditionGroup():
 
-	def __init__(self, name):
-		self.name = name
-		self.condition = ["asd"]
+	def __init__(self):
+		self.conditions = []
 
 
 	def add_condition(self, condition, optn, then, else_value):
 		input_json = {'condition': condition, 'optn':optn, 'then': then, 'else_value':else_value}
-		self.condition.append(input_json)
+		self.conditions.append(input_json)
+
+	@property
+	def conditions(self):
+	    return self.conditions
+	
 
 
 '''
-Pundit class where structure is defined and inherited features of pundit base and condition groups
+Pundit class where structure is defined and 
+inherited features of pundit base and condition groups
 '''
 class Pundit(PunditBase, ConditionGroup):
 
+
 	def __init__(self, pundit, conditions):
 		self.pundit = pundit
-		self.conditions = conditions
-		self.structure = []
+		self.conditions = conditions.conditions
 
 
 	def evaluate(self, input):
-		import ipdb;ipdb.set_trace()
-		# input stuff
-		input_json = {'id': id, 'value':value, 'type': type}
-		self.input_set.append(input_json) 
 		
 		#check setup
-		type_condition = [x for x in condition.condition if x['type'] == type]
-		process_data = [x['value'] for x in self.processed_input if x['id'] == type]
+		type_condition = [x['condition'] for x in self.conditions]
 
-
-		for x in type_condition:
-			if x['condition'] == 'IN':
-				return True if True in [x['value'] in pd for pd in process_data] else False
+		for x in self.conditions:
+			if x['optn'] == 'IN':
+				return x['then'] if True in [pd in input for pd in type_condition] else x['else_value']
 			else:
 				pass
-
 
 
 
