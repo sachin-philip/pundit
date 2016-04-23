@@ -74,9 +74,11 @@ KEY_NOT_IN
 ```python
 from pundit import Pundit
 pundit = Pundit(base, conditiongroup)
-```
->>> pundit.evaluate(input)
 
+
+>>> pundit.evaluate(input)
+```
+**input*** Input to evaluate
 
 
 
