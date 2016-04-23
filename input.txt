@@ -1,4 +1,7 @@
-from pundit import PunditBase, Pundit, ConditionGroup
+from pundit.base import PunditBase
+from pundit.condition import ConditionGroup
+from pundit import Pundit
+
 base = PunditBase()
 base.add_structure("designation", "rank")
 base.structure

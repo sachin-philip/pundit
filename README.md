@@ -20,7 +20,7 @@ pip install pundit
 #### Set Structure for Input
 
 ```python
-from pundit import PunditBase
+from pundit.base import PunditBase
 base = PunditBase()
 
 #### Usage
@@ -31,7 +31,7 @@ base.add_structure(arg_1, arg_2)
 #### Set conditiongroup
 
 ```python
-from pundit import Conditiongroup
+from pundit.condition import Conditiongroup
 conditiongroup = Conditiongroup()
 
 #### Usage
@@ -78,7 +78,7 @@ pundit = Pundit(base, conditiongroup)
 
 >>> pundit.evaluate(input)
 ```
-**input*** Input to evaluate
+**input** Input to evaluate
 
 
 
