@@ -22,11 +22,9 @@ pip install pundit
 ```python
 from pundit import PunditBase
 base = PunditBase()
-```
 
 #### Usage
 
-```python
 base.add_structure(arg_1, arg_2)
 ```
 
@@ -35,13 +33,10 @@ base.add_structure(arg_1, arg_2)
 ```python
 from pundit import Conditiongroup
 conditiongroup = Conditiongroup()
-```
 
 #### Usage
 
-```python
 conditiongroup.add_condition(match, condition type, success response, failed response)
-```
 
 **Match:** str or integer data argument
 
@@ -68,7 +63,7 @@ VALUE_IS
 KEY_IS
 KEY_IN
 KEY_NOT_IN
-
+```
 
 
 #### Evaluate pundit
