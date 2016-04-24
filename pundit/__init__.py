@@ -19,16 +19,34 @@ class Pundit(PunditBase, ConditionGroup):
 		self.conditions = conditions.conditions
 
 
-	def evaluate(self, input):
-		
-		#check setup
-		type_condition = [x['condition'] for x in self.conditions]
+	def evaluate(self, arg1, arg2):
 
-		for x in self.conditions:
-			if x['optn'] == 'IN':
-				return x['then'] if True in [pd in input for pd in type_condition] else x['else_value']
-			else:
-				pass
+		import ipdb;ipdb.set_trace()
+		
+		
+		if type(input) == str:
+			type_condition = [x['condition'] for x in self.conditions]
+
+			for x in self.conditions:
+				if x['optn'] == 'IN':
+					return x['then'] if True in [pd in input for pd in type_condition] else x['else_value']
+				elif x['optn'] == 'NOT_IN':
+					return x['then'] if True in [pd in input for pd in type_condition] else x['else_value']
+				elif x['optn'] == 'NOT_IS':
+					pass
+				else:
+					return "unsupported operation"
+		elif type(input) == int:
+			print "integer"
+		elif type(input) == list:
+			print "list"
+		elif type(input) == dict:
+			print "dict"
+		else:
+			print "unsupported format"
+
+
+		
 
 
 

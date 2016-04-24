@@ -11,8 +11,8 @@ class ConditionGroup():
 		self.conditions = []
 
 
-	def add_condition(self, condition, optn, then, else_value):
-		input_json = {'condition': condition, 'optn':optn, 'then': then, 'else_value':else_value}
+	def add_condition(self, l1, optn, arg, then, else_value):
+		input_json = {'l1': l1, 'optn':optn, 'arg':arg, 'then': then, 'else_value':else_value}
 		self.conditions.append(input_json)
 
 	@property
