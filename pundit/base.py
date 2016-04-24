@@ -46,6 +46,8 @@ class PunditBase():
 
 	def add_structure(self, arg1, arg2):
 		self.structure = []
+		self.arg1 = arg1
+		self.arg2 = arg2
 		self.structure.append({arg1:{}, arg2:{}})
 
 

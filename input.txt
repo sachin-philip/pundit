@@ -9,17 +9,13 @@ base.structure
 
 conditions = ConditionGroup()
 conditions.add_condition("chief","IN", "designation", "Success", "Failed")
-
-
-
 conditions.add_condition("1","IN","rank", "Success", "Failed")
 conditions.conditions
-designation, rank -> from structure
 
 
 pundit = Pundit(base, conditions)
 
-pundit.evaluate('chief technology officer')
+pundit.evaluate('chief technology officer', '2')
 
 >>> Success
 

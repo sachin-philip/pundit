@@ -17,36 +17,29 @@ class Pundit(PunditBase, ConditionGroup):
 	def __init__(self, pundit, conditions):
 		self.pundit = pundit
 		self.conditions = conditions.conditions
+		self.response = []
+		self.set_input = []
 
 
-	def evaluate(self, arg1, arg2):
+	def evaluate(self, arg1, arg2 = None):
 
-		import ipdb;ipdb.set_trace()
+		self.set_input.append({self.pundit.arg1: arg1, self.pundit.arg2:arg2})
 		
+		for yme in self.conditions:
+
+			# type_condition = [x['condition'] for x in self.conditions]
+			# for x in self.conditions:
+			# import ipdb;ipdb.set_trace()
+			if yme['optn'] == 'IN':
+				self.response.append(True) if True in [yme['l1'] in  self.set_input[0][yme['arg']]] else self.response.append(False)
+			elif yme['optn'] == 'NOT_IN':
+				self.response.append(True) if True in [yme['l1'] in  self.set_input[0][yme['arg']]] else self.response.append(False)
+			elif yme['optn'] == 'NOT_IS':
+				pass
+			else:
+				return "unsupported operation"
 		
-		if type(input) == str:
-			type_condition = [x['condition'] for x in self.conditions]
-
-			for x in self.conditions:
-				if x['optn'] == 'IN':
-					return x['then'] if True in [pd in input for pd in type_condition] else x['else_value']
-				elif x['optn'] == 'NOT_IN':
-					return x['then'] if True in [pd in input for pd in type_condition] else x['else_value']
-				elif x['optn'] == 'NOT_IS':
-					pass
-				else:
-					return "unsupported operation"
-		elif type(input) == int:
-			print "integer"
-		elif type(input) == list:
-			print "list"
-		elif type(input) == dict:
-			print "dict"
-		else:
-			print "unsupported format"
-
-
-		
+		return True if True in self.response else False
 
 
 
