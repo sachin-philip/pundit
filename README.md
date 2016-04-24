@@ -36,10 +36,11 @@ conditiongroup = Conditiongroup()
 
 #### Usage
 
-conditiongroup.add_condition(match, condition type, success response, failed response)
+conditiongroup.add_condition(match, condition type, argument, success response, failed response)
 ```
 
 **Match:** str or integer data argument
+**Argument:** arguments arg_1, arg_2 which was set as structure
 
 **Condition Types:** 
 ```
@@ -76,7 +77,7 @@ from pundit import Pundit
 pundit = Pundit(base, conditiongroup)
 
 
->>> pundit.evaluate(input)
+>>> pundit.evaluate(input_1, input_2)
 ```
 **input** Input to evaluate
 
