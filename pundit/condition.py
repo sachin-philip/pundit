@@ -9,6 +9,8 @@ class ConditionGroup():
 
 	def __init__(self):
 		self.conditions = []
+		self.success = 'success'
+		self.failed = 'failed'
 
 
 	def add_condition(self, l1, optn, arg, then, else_value):
@@ -18,3 +20,7 @@ class ConditionGroup():
 	@property
 	def conditions(self):
 	    return self.conditions
+
+	def response(success, failed):
+		self.success = success
+		self.failed = failed

@@ -16,6 +16,7 @@ class Pundit(PunditBase, ConditionGroup):
 
 	def __init__(self, pundit, conditions):
 		self.pundit = pundit
+		self.condition_val = conditions
 		self.conditions = conditions.conditions
 		self.response = []
 		self.set_input = []
@@ -39,7 +40,7 @@ class Pundit(PunditBase, ConditionGroup):
 			else:
 				return "unsupported operation"
 		
-		return True if True in self.response else False
+		return self.condition_val.success if True in self.response else self.condition_val.success
 
 
 

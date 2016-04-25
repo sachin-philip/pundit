@@ -57,16 +57,6 @@ LT
 GTE
 LTE
 
-List
-IN
-ORDER_IS
-VALUE_IS
-
-Dictionary
-VALUE_IS
-KEY_IS
-KEY_IN
-KEY_NOT_IN
 ```
 
 

@@ -4,13 +4,13 @@ from pundit import Pundit
 
 base = PunditBase()
 base.add_structure("designation", "rank")
-base.structure
+base.structure -> {"designation":{}, "rank"{}}
 
 
 conditions = ConditionGroup()
-conditions.add_condition("chief","IN", "designation", "Success", "Failed")
-conditions.add_condition("1","IN","rank", "Success", "Failed")
-conditions.conditions
+conditions.add_condition("chief","IN", "designation")
+conditions.add_condition("1","IN","rank", "Success")
+conditions.response("success", "failed") -> response if satisfied
 
 
 pundit = Pundit(base, conditions)
