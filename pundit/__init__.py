@@ -28,14 +28,23 @@ class Pundit(PunditBase, ConditionGroup):
 		
 		for yme in self.conditions:
 
-			# type_condition = [x['condition'] for x in self.conditions]
-			# for x in self.conditions:
-			# import ipdb;ipdb.set_trace()
 			if yme['optn'] == 'IN':
 				self.response.append(True) if True in [yme['l1'] in  self.set_input[0][yme['arg']]] else self.response.append(False)
 			elif yme['optn'] == 'NOT_IN':
 				self.response.append(True) if True in [yme['l1'] in  self.set_input[0][yme['arg']]] else self.response.append(False)
 			elif yme['optn'] == 'NOT_IS':
+				pass
+			elif yme['optn'] == 'EQ':
+				pass
+			elif yme['optn'] == 'NOT_EQ':
+				pass
+			elif yme['optn'] == 'GT':
+				pass
+			elif yme['optn'] == 'LT':
+				pass
+			elif yme['optn'] == 'GTE':
+				pass
+			elif yme['optn'] == 'LTE':
 				pass
 			else:
 				return "unsupported operation"

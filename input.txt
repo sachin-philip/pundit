@@ -8,9 +8,10 @@ base.structure -> {"designation":{}, "rank"{}}
 
 
 conditions = ConditionGroup()
-conditions.add_condition("chief","IN", "designation")
-conditions.add_condition("1","IN","rank", "Success")
-conditions.response("success", "failed") -> response if satisfied
+conditions.add_condition("chief","IN", "designation", "success", "failed")
+conditions.add_condition("1","IN","rank", "Success","success", "failed")
+
+	--> add_condition(value, operation, argument addded in structure, success response, failed response)
 
 
 pundit = Pundit(base, conditions)
