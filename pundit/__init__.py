@@ -31,21 +31,21 @@ class Pundit(PunditBase, ConditionGroup):
 			if yme['optn'] == 'IN':
 				self.response.append(True) if True in [yme['l1'] in  self.set_input[0][yme['arg']]] else self.response.append(False)
 			elif yme['optn'] == 'NOT_IN':
-				self.response.append(True) if True in [yme['l1'] in  self.set_input[0][yme['arg']]] else self.response.append(False)
+				self.response.append(False) if True in [yme['l1'] in self.set_input[0][yme['arg']]] else self.response.append(True)
 			elif yme['optn'] == 'NOT_IS':
 				pass
 			elif yme['optn'] == 'EQ':
-				pass
+				self.response.append(True) if True in [yme['l1'] == self.set_input[0][yme['arg']]] else self.response.append(False)
 			elif yme['optn'] == 'NOT_EQ':
-				pass
+				self.response.append(True) if True in [yme['l1'] !=  self.set_input[0][yme['arg']]] else self.response.append(False)
 			elif yme['optn'] == 'GT':
-				pass
+				self.response.append(True) if True in [yme['l1'] < self.set_input[0][yme['arg']]] else self.response.append(False)
 			elif yme['optn'] == 'LT':
-				pass
+				self.response.append(True) if True in [yme['l1'] > self.set_input[0][yme['arg']]] else self.response.append(False)
 			elif yme['optn'] == 'GTE':
-				pass
+				self.response.append(True) if True in [yme['l1'] <=  self.set_input[0][yme['arg']]] else self.response.append(False)
 			elif yme['optn'] == 'LTE':
-				pass
+				self.response.append(True) if True in [yme['l1'] >=  self.set_input[0][yme['arg']]] else self.response.append(False)
 			else:
 				return "unsupported operation"
 		
