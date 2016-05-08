@@ -21,6 +21,7 @@ class ConditionGroup():
 	def conditions(self):
 	    return self.conditions
 
-	def response(success, failed):
+
+	def response(self, success, failed):
 		self.success = success
 		self.failed = failed

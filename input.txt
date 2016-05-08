@@ -4,29 +4,26 @@ from pundit import Pundit
 
 base = PunditBase()
 base.add_structure("designation", "rank")
-base.structure -> {"designation":{}, "rank"{}}
-
 
 conditions = ConditionGroup()
 conditions.add_condition("chief","IN", "designation", "success", "failed")
-conditions.add_condition("1","IN","rank", "Success","success", "failed")
+conditions.add_condition("1","IN","rank","success", "failed")
 
-	--> add_condition(value, operation, argument addded in structure, success response, failed response)
+conditions.response(True, False)
+
+Note : in add condition sucess and faled wont have effect
 
 
 pundit = Pundit(base, conditions)
 
 pundit.evaluate('chief technology officer', '2')
 
->>> Success
+>>> True
 
 pundit.evaluate('sofware engineer')
 
->>> Success
+>>> True
 
 pundit.evaluate('sofware')
 
->>> Failed
-
-
-
+>>> False
