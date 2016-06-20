@@ -25,15 +25,14 @@ class Pundit(PunditBase, ConditionGroup):
         # arg_two = arg2.lower() if type(arg2) == str else arg2
 
         # appending to a sample dump with the struture
-        struture = self.pundit.structure
+        structure = self.pundit.structure
         self.set_input = {}
-        for xc in enumerate(arg):
-            ar = struture[xc[0]]
-            dat = ar.keys()[0]
+        for xc in enumerate(structure):
+            dat = xc[1].keys()[0]
             try:
-                self.set_input[dat] = xc[1]
+                self.set_input[dat] = arg[xc[0]]
             except:
-                import ipdb;ipdb.set_trace()
+                self.set_input[dat] = None
 
         self.response = []
         # checking for the conditions
@@ -63,7 +62,7 @@ class Pundit(PunditBase, ConditionGroup):
                     yme['l1'] <= self.set_input[yme['arg']]] else self.response.append(False)
             elif yme['optn'] == 'LTE':
                 self.response.append(True) if True in [
-                    yme['l1'] >= self.set_input[yme['arg']]] else self.response.append(False)
+                    yme['l1'] >= self.set_input[0][yme['arg']]] else self.response.append(False)
             else:
                 return "unsupported operation"
 

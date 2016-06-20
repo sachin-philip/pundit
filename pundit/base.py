@@ -8,7 +8,6 @@ Arguments : name
 
 class PunditBase():
 
-
 	def __init__(self):
 		self.mine = 'asd'
 	
