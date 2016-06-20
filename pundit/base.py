@@ -44,15 +44,18 @@ class PunditBase():
 			pass
 
 
-	def add_structure(self, arg1, arg2):
+	def add_structure(self, *arg):
 		self.structure = []
-		self.arg1 = arg1
-		self.arg2 = arg2
-		self.structure.append({arg1:{}, arg2:{}})
+		length_of_struct = len(arg)
+		for z in enumerate(arg):
+			self.structure.append({ z[1]:{}})
+		return
 
 
 	@property
 	def structure(self):
 	    return self.structure
+
+
 	
 	

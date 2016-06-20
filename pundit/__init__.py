@@ -3,7 +3,7 @@ import itertools
 from pundit.base import PunditBase
 from pundit.condition import ConditionGroup
 
-__version__ = "0.0.6"
+__version__ = "0.0.9"
 
 '''
 Pundit class where structure is defined and
@@ -19,44 +19,51 @@ class Pundit(PunditBase, ConditionGroup):
         self.response = []
         self.set_input = []
 
-    def evaluate(self, arg1, arg2=None):
-        arg_one = arg1.lower() if type(arg1) == str else arg1
-        arg_two = arg2.lower() if type(arg2) == str else arg2
+    def evaluate(self, *arg):
+
+        # arg_one = arg1.lower() if type(arg1) == str else arg1
+        # arg_two = arg2.lower() if type(arg2) == str else arg2
 
         # appending to a sample dump with the struture
-        self.set_input = []
-        self.response = []
-        self.set_input.append({self.pundit.arg1: arg_one, self.pundit.arg2: arg_two})
+        struture = self.pundit.structure
+        self.set_input = {}
+        for xc in enumerate(arg):
+            ar = struture[xc[0]]
+            dat = ar.keys()[0]
+            try:
+                self.set_input[dat] = xc[1]
+            except:
+                import ipdb;ipdb.set_trace()
 
+        self.response = []
         # checking for the conditions
         for yme in self.conditions:
-
             if yme['optn'] == 'IN':
                 self.response.append(True) if True in [
-                    yme['l1'] in self.set_input[0][yme['arg']]] else self.response.append(False)
+                    yme['l1'] in self.set_input[yme['arg']]] else self.response.append(False)
             elif yme['optn'] == 'NOT_IN':
                 self.response.append(False) if True in [
-                    yme['l1'] in self.set_input[0][yme['arg']]] else self.response.append(True)
+                    yme['l1'] in self.set_input[yme['arg']]] else self.response.append(True)
             elif yme['optn'] == 'NOT_IS':
                 pass
             elif yme['optn'] == 'EQ':
                 self.response.append(True) if True in [
-                    yme['l1'] == self.set_input[0][yme['arg']]] else self.response.append(False)
+                    yme['l1'] == self.set_input[yme['arg']]] else self.response.append(False)
             elif yme['optn'] == 'NOT_EQ':
                 self.response.append(True) if True in [
-                    yme['l1'] != self.set_input[0][yme['arg']]] else self.response.append(False)
+                    yme['l1'] != self.set_input[yme['arg']]] else self.response.append(False)
             elif yme['optn'] == 'GT':
                 self.response.append(True) if True in [
-                    yme['l1'] < self.set_input[0][yme['arg']]] else self.response.append(False)
+                    yme['l1'] < self.set_input[yme['arg']]] else self.response.append(False)
             elif yme['optn'] == 'LT':
                 self.response.append(True) if True in [
-                    yme['l1'] > self.set_input[0][yme['arg']]] else self.response.append(False)
+                    yme['l1'] > self.set_input[yme['arg']]] else self.response.append(False)
             elif yme['optn'] == 'GTE':
                 self.response.append(True) if True in [
-                    yme['l1'] <= self.set_input[0][yme['arg']]] else self.response.append(False)
+                    yme['l1'] <= self.set_input[yme['arg']]] else self.response.append(False)
             elif yme['optn'] == 'LTE':
                 self.response.append(True) if True in [
-                    yme['l1'] >= self.set_input[0][yme['arg']]] else self.response.append(False)
+                    yme['l1'] >= self.set_input[yme['arg']]] else self.response.append(False)
             else:
                 return "unsupported operation"
 
